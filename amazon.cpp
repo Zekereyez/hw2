@@ -100,10 +100,15 @@ int main(int argc, char* argv[])
                 done = true;
             }
 	    /* Add support for other commands here */
-
-
-
-
+            else if (cmd == "ADD") {
+                // do something here 
+            }
+            else if (cmd == "VIEWCART") {
+                // do something here 
+            }
+            else if (cmd == "BUYCART") {
+                // do something here 
+            }
             else {
                 cout << "Unknown command" << endl;
             }
