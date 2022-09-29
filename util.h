@@ -40,9 +40,10 @@ std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2) {
 	// the items of distinct set elements from both sets
 	// into the made set and then return said set 
 	std::set<T> unionedSet = s2;
+	
 	// is this allowed??
-	unionedSet.insert(s2.begin(), s2.end());
-	unionedSet.insert(s1.begin(), s1.end());
+	// unionedSet.insert(s2.begin(), s2.end());
+	// unionedSet.insert(s1.begin(), s1.end());
 
 	// or 
 	
