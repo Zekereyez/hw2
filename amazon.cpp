@@ -30,6 +30,8 @@ int main(int argc, char* argv[])
      *  DataStore type to your derived type
      ****************/
     DataStore ds;
+		// My derived datastore object is 
+		// MyDataStore ds;
 
 
 
@@ -102,6 +104,9 @@ int main(int argc, char* argv[])
 	    /* Add support for other commands here */
             else if (cmd == "ADD") {
                 // do something here 
+								// call the addtocart member function 
+								// for the derived object and same below
+								// remeber iostream stuff
             }
             else if (cmd == "VIEWCART") {
                 // do something here 
