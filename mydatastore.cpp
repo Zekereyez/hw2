@@ -1,5 +1,5 @@
 #include "mydatastore.h"
-#include "util.h"
+
 
 using namespace std;
 
@@ -12,6 +12,17 @@ MyDataStore:~MyDataStore () {}
 */
 void MyDataStore::addProduct(Product* p) {
 	// add the product
+	// extract the name from object
+	string productName = p->getName();
+	products.insert(make_pair(convToLower(productName), p));
+
+	// for each product we need to get the keywords that 
+	// match it and then iterate through the set of keywords and
+	// insert each keyword into the set of product that matches or has
+	// said keyword in it -- ie this will be a lot of iteration, conditional 
+	// checking and insertion
+
+
 }
 
 /**
@@ -19,6 +30,13 @@ void MyDataStore::addProduct(Product* p) {
 */
 void MyDataStore::addUser(User* u) {
 	// add the user here 
+	string username = convToLower( u->getName() );
+	users.insert(make_pair(username, u));
+	// each added user should get a new clean slate cart
+	queue <Product *> userCart;
+	allUsersCarts.insert(make_pair(username, userCart));
+
+
 }
 
 /**
@@ -28,6 +46,8 @@ void MyDataStore::addUser(User* u) {
 */
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type) {
 	// perform the search of products here 
+	// Search: use the set intersection and setunion functions
+	// inside of util.h 
 }
 
 /**

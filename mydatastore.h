@@ -4,8 +4,10 @@
 #include <set>
 #include <vector>
 #include <map>
+#include <queue>
 #include "product.h"
 #include "user.h"
+#include "util.h"
 
 using namespace std;
 
@@ -72,7 +74,7 @@ public:
 		// user to the products they want to buy so something 
 		// along the lines of a vector or see how the cart should 
 		// operate for fifo or if its filo 
-		map <string, Product *> cartsOfAllUsers;
+		map <string, queue <Product *> > allUsersCart;
 
 		// TODO: Fix the display string so that the format of it 
 		// meets the requirements of what's on the right side 
