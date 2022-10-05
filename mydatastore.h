@@ -1,5 +1,6 @@
 #ifndef MYDATASTORE_H
 #define MYDATASTORE_H
+#include "datastore.h"
 #include <string>
 #include <set>
 #include <vector>
@@ -67,14 +68,14 @@ public:
 		// product name to product object
 		map <string, Product *> products;
 		// username to user object
-		map <string, Users *> users;
+		map <string, User *> users;
 		// product keyword to set of products with keyword 
 		map <string, set <Product *> > keywordToProducts;
 		// for the cart we want to associate the username of the 
 		// user to the products they want to buy so something 
 		// along the lines of a vector or see how the cart should 
 		// operate for fifo or if its filo 
-		map <string, queue <Product *> > allUsersCart;
+		map <string, queue <Product *> > allUsersCarts;
 
 		// TODO: Fix the display string so that the format of it 
 		// meets the requirements of what's on the right side 

@@ -3,9 +3,9 @@
 
 using namespace std;
 
-MyDataStore:MyDataStore () {}
+// MyDataStore::MyDataStore () {}
 
-MyDataStore:~MyDataStore () {}
+MyDataStore::~MyDataStore () {}
 
 /**
 * Adds a product to the data store
