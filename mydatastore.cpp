@@ -1,6 +1,5 @@
 #include "mydatastore.h"
 
-
 using namespace std;
 
 // MyDataStore::MyDataStore () {}
@@ -54,7 +53,7 @@ void MyDataStore::addUser(User* u) {
 	string username = convToLower( u->getName() );
 	users.insert(make_pair(username, u));
 	// each added user should get a new clean slate cart
-	queue <Product *> userCart;
+	vector <Product *> userCart;
 	allUsersCarts.insert(make_pair(username, userCart));
 }
 
@@ -117,8 +116,19 @@ void MyDataStore::dump(std::ostream& ofile) {
 
 // TODO: MAKE FUNCTION FOR MENU COMMANDS
 // FOR EACH COMMAND THERE IS 
-void MyDataStore::addProductToUsersCart(string username, Product *product) {
+void MyDataStore::addProductToUsersCart(string username, Product * product) {
 	// add product to the cart
+	// check if username is valid 
+	map <string, vector <Product *> >::iterator it = allUsersCarts.find(username);
+	if (it == allUsersCarts.end()) {
+		cout << "invalid username" << endl;
+		return;
+	}
+	else {
+		// valid user in map
+		// should use vector instead of queue??
+		it->second.push_back(product);
+	}
 	
 }
 
@@ -127,4 +137,26 @@ void MyDataStore::buyUsersCart(string username) {
 }
 void MyDataStore::viewUsersCart(string username) {
 	// view the users cart here do we dump it??
+	// given a username we need to access the items of the 
+	// cart 
+	map <string, vector <Product *> >::iterator it = allUsersCarts.find(username);
+	if (it == allUsersCarts.end()) {
+		// user not found 
+		cout << "invalid username";
+		return;
+	}
+	else {
+		// user is found so should have a cart
+		// we have the iterator that points to the whole thing
+		// we need to narrow it down to the vector of product 
+		// and from there we can iterate through the vector and 
+		// print it out 
+		vector <Product *> userProductsInCart = it->second;
+		// vector <Product *>::iterator jt = userProductsInCart.begin();
+		for (unsigned int i = 0; i < userProductsInCart.size(); ++i) {
+			cout << "Item " << i << ": " << endl;
+			cout << userProductsInCart[i]->displayString() << endl;
+		}
+
+	}
 }

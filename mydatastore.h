@@ -75,7 +75,7 @@ public:
 		// user to the products they want to buy so something 
 		// along the lines of a vector or see how the cart should 
 		// operate for fifo or if its filo 
-		map <string, queue <Product *> > allUsersCarts;
+		map <string, vector <Product *> > allUsersCarts;
 
 		// TODO: Fix the display string so that the format of it 
 		// meets the requirements of what's on the right side 
