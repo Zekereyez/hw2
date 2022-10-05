@@ -134,6 +134,43 @@ void MyDataStore::addProductToUsersCart(string username, Product * product) {
 
 void MyDataStore::buyUsersCart(string username) {
 	// buy the cart, check balance?
+	// putting things you can't buy into a new vector
+	// and then replacing the old vector with the vector of 
+	// items that you could not buy -- 
+	if (users.find(username) == users.end()) {
+		cout << "invalid username";
+		return;
+	}
+	else {
+		// valid username 
+		User * currentUser = users[username];
+		// now get the cart of the user and buy shitttt
+		vector <Product *> cartToBuy = allUsersCarts[username];
+		vector <Product *> productsNotPurchased;
+		for (unsigned int i = 0; i < cartToBuy.size(); ++i) {
+			// use deductAmount and then need to deduct the qty of the 
+			// item if able to buy if not able to buy insert into other
+			// vector so we can put back into map - make sure to charge 
+			double price = cartToBuy[i]->getPrice();
+			int productQty = cartToBuy[i]->getQty();
+			double userBalance = currentUser->getBalance();
+			double remainingBalance = userBalance - price;
+			if (productQty > 0 && (remainingBalance) > 0) {
+				currentUser->deductAmount(price);
+				cartToBuy[i]->subtractQty(1);
+			}
+			else if (productQty > 0 && (remainingBalance) < 0) {
+				// this means that the item is in stock but we do not 
+				// have the balance to buy the product so we need to 
+				// add the product into the new vector 
+				productsNotPurchased.push_back(cartToBuy[i]);
+			}
+		}
+		// end of loop so now we can replace the users cart
+		// will work as if cart is empty that means we cleared 
+		// out the cart and have a new one 
+		allUsersCarts[username] = productsNotPurchased;
+	}
 }
 void MyDataStore::viewUsersCart(string username) {
 	// view the users cart here do we dump it??
