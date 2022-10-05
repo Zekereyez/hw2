@@ -39,7 +39,7 @@ std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2) {
 	// for this function need to create a set that will hold the 
 	// the items of distinct set elements from both sets
 	// into the made set and then return said set 
-	std::set<T> unionedSet = s2;
+	typename std::set<T> unionedSet = s2;
 	
 	// is this allowed??
 	// unionedSet.insert(s2.begin(), s2.end());
@@ -47,7 +47,7 @@ std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2) {
 
 	// or 
 	
-	for (std::set<T>::iterator it = s1.begin(); it != s1.end(); ++it) {
+	for (typename std::set<T>::iterator it = s1.begin(); it != s1.end(); ++it) {
 		if (!unionedSet.find(*it)) {
 			unionedSet.insert(*it);
 		}
