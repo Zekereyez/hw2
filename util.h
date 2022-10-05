@@ -22,8 +22,8 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2) {
 	// so if we run out of iterations in one set ie one set is larger
 	// than the other then we can discard the elements and not insert
 	// into the intersected set since cant match sgsgsgsg
-	std::set<T> intersectedSet;
-	for (std::set<T>::iterator it = s1.begin(); it != s1.end(); ++it) {
+	typename std::set<T> intersectedSet;
+	for (typename std::set<T>::iterator it = s1.begin(); it != s1.end(); ++it) {
 		// if the item in s1 is found in s2 we can then insert it 
 		if (s2.find(*it)) {
 			intersectedSet.insert(*it);
