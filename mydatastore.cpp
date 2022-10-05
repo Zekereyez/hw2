@@ -194,6 +194,5 @@ void MyDataStore::viewUsersCart(string username) {
 			cout << "Item " << i << ": " << endl;
 			cout << userProductsInCart[i]->displayString() << endl;
 		}
-
 	}
 }

@@ -29,9 +29,7 @@ int main(int argc, char* argv[])
      * Declare your derived DataStore object here replacing
      *  DataStore type to your derived type
      ****************/
-    DataStore ds;
-		// My derived datastore object is 
-		// MyDataStore ds;
+    MyDataStore ds;
 
 
 
@@ -107,12 +105,33 @@ int main(int argc, char* argv[])
 								// call the addtocart member function 
 								// for the derived object and same below
 								// remeber iostream stuff
+								string username;
+								int hitIndex;
+								if (ss >> username ) {
+									username = convToLower(username);
+								}
+								if (ss >> hitIndex) {
+									// we deduct one from the hitIndex to account for the 
+									// way it displays for the user and how the vector 
+									// actually stores the product
+									ds.addProductToUsersCart(username, hits[hitNum - 1])
+								}
             }
             else if (cmd == "VIEWCART") {
                 // do something here 
+								string username;
+								if (ss >> username) {
+									username = convToLower(username);
+									ds.viewUsersCart(username);
+								}
             }
             else if (cmd == "BUYCART") {
                 // do something here 
+								string username;
+								if (ss >> username) {
+									username = convToLower(username);
+									ds.buyUsersCart(username);
+								}
             }
             else {
                 cout << "Unknown command" << endl;
