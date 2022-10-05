@@ -75,12 +75,30 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	// vector of product objects 
 	set <Product *> setOfProducts;
 	vector<string>::iterator it = terms.begin();
+	map <string, set <Product *> >:: iterator jt;
 	for (; it != terms.end(); ++it) {
 		// we want to iterate and check if map has the 
 		// terms in it and then set those terms to the 
 		// setOfProducts and from there either do type 1 or 0
 		// search set calls until we finish and have a resulting
 		// set with the correct products in it
+		jt = keywordToProducts.find(*it);
+		if (jt != keywordToProducts.end()) {
+			// this means we have a valid set of products
+			// we can't use set intersection on an empty set
+			if (type == 0) {
+				if (setOfProducts.size() == 0) {
+					setOfProducts = jt->second;
+				}
+				else {
+					// the size of the set isnt zero we can use intersection
+					setOfProducts = setIntersection(setOfProducts, jt->second);
+				}
+			}
+			else if (type == 1) {
+				setOfProducts = setUnion(setOfProducts, jt->second);
+			}
+		}
 	}
 	// at the end of the loop we assume that the set is filled with
 	// the correct products in it and we can then fill the 
@@ -88,7 +106,6 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	// ans: use the assign or can even use the constructor to do this
 	searchResultOfProducts.assign(setOfProducts.begin(), setOfProducts.end());
 	return searchResultOfProducts;
-
 }
 
 /**
@@ -102,6 +119,7 @@ void MyDataStore::dump(std::ostream& ofile) {
 // FOR EACH COMMAND THERE IS 
 void MyDataStore::addProductToUsersCart(string username, Product *product) {
 	// add product to the cart
+	
 }
 
 void MyDataStore::buyUsersCart(string username) {
