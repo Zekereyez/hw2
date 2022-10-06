@@ -18,4 +18,5 @@ class Movie : public Product {
 		// create private shit here
 		std::string genre;
 		std::string rating;
-}
+};
+#endif

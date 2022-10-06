@@ -9,7 +9,7 @@ class Book : public Product {
 		// each derived product class needs to Implement
 		// functions like keywords() displayString() 
 		// and dump() so we need these
-		Book(const std::string category const std::string name, double price,
+		Book(const std::string category, const std::string name, double price,
 			int qty, std::string isbn, std::string author);
 		std::set<std::string> keywords();
 		std::string displayString();
@@ -19,17 +19,5 @@ class Book : public Product {
 		// create private shit here
 		std::string author;
 		std::string isbn;
-}
-
-class Course { 
-	public:
-		Course();
-		std::string getCourseName();
-		void setCourseName(std::string courseName);
-		std::set<Assignment*> getAssignmentSet();
-		void addAssignment(Assignment* a);
-
-	private: 
-		std::set<Assignment*> mAssignmentSet;
-		std::string mCourseName;
 };
+#endif

@@ -9,6 +9,7 @@
 #include "db_parser.h"
 #include "product_parser.h"
 #include "util.h"
+#include "mydatastore.h"
 
 using namespace std;
 struct ProdNameSorter {
@@ -114,7 +115,7 @@ int main(int argc, char* argv[])
 									// we deduct one from the hitIndex to account for the 
 									// way it displays for the user and how the vector 
 									// actually stores the product
-									ds.addProductToUsersCart(username, hits[hitNum - 1])
+									ds.addProductToUsersCart(username, hits[hitIndex - 1]);
 								}
             }
             else if (cmd == "VIEWCART") {

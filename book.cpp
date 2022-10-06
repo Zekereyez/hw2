@@ -20,9 +20,9 @@ std::set<std::string> Book::keywords(){
 	// are item specific to the product such as size and brand
 	newSet.insert(isbn);
 	newSet.insert(convToLower(author));
-	newSet.insert(convToLower(category));
+	newSet.insert(convToLower(category_));
 	// parseStringToWords returns a set so we can use that with the set union
-	return setUnion(parseStringToWords(getName()), newSet);
+	return setUnion(parseStringToWords(name_), newSet);
 
 }
 
