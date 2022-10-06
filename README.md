@@ -1,4 +1,4 @@
-# hw1
+# hw2
 USC CS 104 HW2 Repo
 - Name: EZEQUIEL REYES
 - Email: reyeseze@usc.edu
