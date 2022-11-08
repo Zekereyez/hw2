@@ -1,0 +1,36 @@
+Read 3 products
+Read 1 users
+=====================================
+Menu: 
+  AND term term ...                  
+  OR term term ...                   
+  ADD username search_hit_number     
+  VIEWCART username                  
+  BUYCART username                   
+  QUIT new_db_filename               
+====================================
+
+Enter command: 
+<products>
+clothing
+FRC Fan T-Shirt
+17
+3
+7
+FIRST
+clothing
+Men's Fitted Shirt
+39.99
+25
+Medium
+J. Crew
+clothing
+Women's Blouse
+34.99
+8
+Small
+JCPenny
+</products>
+<users>
+user 10000 0
+</users>
