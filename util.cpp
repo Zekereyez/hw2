@@ -6,16 +6,16 @@
 #include "util.h"
 
 using namespace std;
-int main () {
-    // main method
-    string allMyWords = "item! c!iip hello what's Men's I'll mov,e";
-    set<string> allWords = parseStringToWords(allMyWords);
-    // cout all the words in the set 
-    for (set<string>::iterator it = allWords.begin();
-    it != allWords.end(); ++it) {
-        cout << *it << endl;
-    }
-}
+// int main () {
+//     // main method
+//     string allMyWords = "item! c!iip hello what's Men's I'll mov,e";
+//     set<string> allWords = parseStringToWords(allMyWords);
+//     // cout all the words in the set 
+//     for (set<string>::iterator it = allWords.begin();
+//     it != allWords.end(); ++it) {
+//         cout << *it << endl;
+//     }
+// }
 std::string convToLower(std::string src)
 {
     std::transform(src.begin(), src.end(), src.begin(), ::tolower);

@@ -1,4 +1,9 @@
 #include "movie.h"
+#include "util.h"
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 Movie::Movie (const std::string category, const std::string name, double price, 
 	int qty, std::string genre, std::string rating) : Product (category, name, price, qty), 
@@ -8,7 +13,7 @@ Movie::Movie (const std::string category, const std::string name, double price,
  }
 
 
-std::set<std::string> Movie::keywords() {
+std::set<std::string> Movie::keywords() const {
 	// fill in 
 	std::set<std::string> newSet;
 	// need to insert the product key words used in util
@@ -16,12 +21,13 @@ std::set<std::string> Movie::keywords() {
 	// are item specific to the product such as size and brand
 	newSet.insert(convToLower(genre));
 	newSet.insert(convToLower(rating));
-	newSet.insert(convToLower(category));
+	newSet.insert(convToLower(category_));
 	// parseStringToWords returns a set so we can use that with the set union
-	return setUnion(parseStringToWords(getName()), newSet);
+  set<string> word = parseStringToWords(getName());
+	return setUnion(word, newSet);
 }
 
-std::string Movie::displayString() {
+std::string Movie::displayString() const {
 	// fill in 
 	// creates a string that contains the product info
 	/*<products>
@@ -50,6 +56,8 @@ std::string Movie::displayString() {
 
 void Movie::dump(std::ostream& os) const {
 	// fill in 
-	cout << displayString();
+  Product::dump(os);
+  os << genre << "\n" << rating << "\n";
+	// std::cout << displayString();
 }
 

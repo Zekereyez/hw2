@@ -94,8 +94,11 @@ int main(int argc, char* argv[])
             else if ( cmd == "QUIT") {
                 string filename;
                 if(ss >> filename) {
+                    ostringstream quitStream;
                     ofstream ofile(filename.c_str());
                     ds.dump(ofile);
+                    ds.dump(quitStream);
+                    cout << quitStream.str();
                     ofile.close();
                 }
                 done = true;

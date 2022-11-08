@@ -10,7 +10,7 @@
 #include "user.h"
 #include "util.h"
 
-using namespace std;
+// using namespace std;
 
 /**
  * DataStore Interface needed for parsing and instantiating products and users
@@ -54,9 +54,9 @@ public:
 
 		// TODO: MAKE FUNCTION FOR MENU COMMANDS
 		// FOR EACH COMMAND THERE IS 
-		void addProductToUsersCart(string username, Product *product);
-		void buyUsersCart(string username);
-		void viewUsersCart(string username);
+		void addProductToUsersCart(std::string username, Product *product);
+		void buyUsersCart(std::string username);
+		void viewUsersCart(std::string username);
 
 	// private data members and structures
 	private:
@@ -66,16 +66,16 @@ public:
 
 		// keep map in data store as a member data structure
 		// product name to product object
-		map <string, Product *> products;
+		std::map <std::string, Product *> products;
 		// username to user object
-		map <string, User *> users;
+		std::map <std::string, User *> users;
 		// product keyword to set of products with keyword 
-		map <string, set <Product *> > keywordToProducts;
+		std::map <std::string, std::set <Product *> > keywordToProducts;
 		// for the cart we want to associate the username of the 
 		// user to the products they want to buy so something 
 		// along the lines of a vector or see how the cart should 
 		// operate for fifo or if its filo 
-		map <string, vector <Product *> > allUsersCarts;
+		std::map <std::string, std::vector <Product *> > allUsersCarts;
 
 		// TODO: Fix the display string so that the format of it 
 		// meets the requirements of what's on the right side 

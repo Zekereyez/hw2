@@ -4,7 +4,10 @@ using namespace std;
 
 // MyDataStore::MyDataStore () {}
 
-MyDataStore::~MyDataStore () {}
+MyDataStore::~MyDataStore () {
+  // delete everything from the store
+
+}
 
 /**
 * Adds a product to the data store
@@ -112,6 +115,17 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 */
 void MyDataStore::dump(std::ostream& ofile) {
 	// look at the dump examples for formatting on the dump
+  ofile << "<products>\n";
+  // iterates through the map of products and calls dump in ranged for loop 
+	for(pair<string, Product*> i: products){
+		(i.second)->dump(ofile);
+	}
+	ofile << "</products>\n";
+	ofile << "<users>\n";
+	for(pair<string, User*> i: users){
+		(i.second)->dump(ofile);
+	}
+	ofile << "</users>" << endl;
 }
 
 // TODO: MAKE FUNCTION FOR MENU COMMANDS

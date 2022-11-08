@@ -12,7 +12,7 @@ Book::Book (const std::string category, const std::string name, double price,
 	 // should use an initialization list here for the items... 
  }
 
-std::set<std::string> Book::keywords(){
+std::set<std::string> Book::keywords() const {
 	// fill in 
 	std::set<std::string> newSet;
 	// need to insert the product key words used in util
@@ -22,11 +22,12 @@ std::set<std::string> Book::keywords(){
 	newSet.insert(convToLower(author));
 	newSet.insert(convToLower(category_));
 	// parseStringToWords returns a set so we can use that with the set union
-	return setUnion(parseStringToWords(name_), newSet);
+  std::set<std::string> stringWord = parseStringToWords(name_);
+	return setUnion(stringWord, newSet);
 
 }
 
-std::string Book::displayString() {
+std::string Book::displayString() const {
 	// creates a string that contains the product info
 	/*<products>
 	product_category
@@ -54,6 +55,8 @@ std::string Book::displayString() {
 
 void Book::dump(std::ostream& os) const {
 	// outputs the database format of the product info
-	// just call displayString and output that 
-	cout << displayString();
+	// just call displayString and output that
+  Product::dump(os);
+  os << isbn << "\n" << author << "\n";
+	// std::cout << displayString();
 }

@@ -1,5 +1,9 @@
 #include "clothing.h"
 #include "util.h"
+#include <ostream>
+#include <sstream>
+
+using namespace std; 
 
 Clothing::Clothing (const std::string category, const std::string name, double price, 
 	int qty, std::string size, std::string brand) : Product (category, name, price, qty),
@@ -7,20 +11,21 @@ Clothing::Clothing (const std::string category, const std::string name, double p
  {
 	 // should use an initialization list here for the items... 
  }
-std::set<std::string> Clothing::keywords(){
+std::set<std::string> Clothing::keywords() const {
 	// ditto
 	std::set<std::string> newSet;
 	// need to insert the product key words used in util
 	// then need to manually insert the items that 
 	// are item specific to the product such as size and brand
-	newSet.insert(convToLower(category));
+	newSet.insert(convToLower(category_));
 	newSet.insert(convToLower(size));
 	newSet.insert(convToLower(brand));
 	// parseStringToWords returns a set so we can use that with the set union
-	return setUnion(parseStringToWords(getName()), newSet);
+	set<string> stringToWord = parseStringToWords(getName());
+	return setUnion(stringToWord, newSet);
 }
 
-std::string Clothing::displayString(){
+std::string Clothing::displayString() const {
 	// ditto
 	// creates a string that contains the product info
 	/*<products>
@@ -49,5 +54,7 @@ std::string Clothing::displayString(){
 
 void Clothing::dump(std::ostream& os) const {
 	// fill in 
-	cout << displayString();
+  Product::dump(os);
+  os << size << "\n" << brand << "\n";
+	// std::cout << displayString();
 }
